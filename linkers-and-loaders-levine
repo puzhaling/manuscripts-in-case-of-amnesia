@@ -1,0 +1,17 @@
+Relocating loaders allowed the authors and users of the subprograms to write eac
+h subprogram as though it would start at location zero, and to defer the actual 
+address binding until the subprograms were linked with a particular main
+program
+
+With the advent of operating systems, relocating loaders separate from linkers a
+nd libraries became necessary
+
+Before OSs, each program had the machine's entire mempory at its disposal, so th
+e program could be assembled and linked for fixed memory addresses, knowing that
+ all addresses in the computer would be available. It defers final address bindi
+ng past link time to load time. Linkers and loaders now divided up to work, with
+ linkers doing part of the address binding, assigning relative addresses within 
+each program, and the loader doing a final relocation step to assign actual addr
+esses
+
+

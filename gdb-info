@@ -1,0 +1,66 @@
+info break - list breakpoints
+condition 1 num_y==1 - conditional stop on breakpoint 1
+break 30 if num_y==1 - conditional stop on line 30
+next - go forward with functions entering
+
+Follow the Principle of Confirmation!
+
+.gdbinit - default name for gdb startup file
+
+gdb shows which line of code is about to be executed.
+gdb can work with lines of src code because of additional information included
+in the executable
+
+delete - delete breakpoints of any type
+tbreak - set a temporary breakpoint
+C allows us to overload functions in different files if they have static
+specifier.
+You should never optimize code until you're finished debugging it
+On a line of code with multiple breakpoints, the breakpoint that triggers the
+break will be the breakpoint with the lowest identifier
+if you don't exit gdb when you change and recompile your code, the next time you
+issue gdb's run command, gdb will sense you that your code has changed and
+automatically reload the new version.
+
+delete - delete all breakpoints
+clear - use it to delete breakpoints with similar to creating them syntax
+
+disable *breakpoint-list* - temporarily disable breakpoints
+enable *breakpoint-list* - enable breakpoints
+
+Each breakpoint has various attributes.
+
+info breakpoints - i b
+Possible breakpoint disposition - keep, del, dis.
+
+Variable is actually a memory address with a name, and a memory address is a
+location! Wow *fire*
+
+GDB does not stop within code for which it does not have debugging information
+(i.e., the symbol table).
+
+next and step command take an optional numeric argument which indicates the
+number of extra lines to next or step through
+
+The finish command (fin) instructs GDB to resume execution until just after the
+current stack frame finishes
+
+The until command is tipically used to complete an executing loop, without
+further pauses within the loop, except at any intervening breakpoints within the
+loop
+
+The syntax for setting a conditional breakpoint is:
+break break-args if (condition)
+
+You set command lists using the commands command
+
+commands command allows you to determine gdb commands to perform when specified
+breakpoint is hit
+
+With define command you can make your own gdb macro
+
+show user - get list of all the macros
+
+gdb is only capable of watching a variable within a single thread
+
+

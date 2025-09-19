@@ -1,0 +1,489 @@
+Every high-level language program must be compiled into assembly language before
+ it can be linked into an executable program
+
+Compiler is not always produce correct assembly-language code
+
+Processors manipulate data based on binary codes defined internally in the proce
+ssor. These codes define what functions the processor should perform, utilizing 
+the data provided by the programmer. These preset codes are referred to as instr
+uction codes
+
+To differentiate between data and instruction codes, special pointers are used t
+o help the processor keep track of where in memory the data and instruction code
+s are stored
+
+The instruction code contains several pieces of information
+
+Every instruction must contain at least 1 byte called the operation code (or opc
+ode for short). The opcode defines what function the processor should perform
+
+Each of the HLL lines of code are matched up with one or more instruction codes 
+pertaining to the specific processor on which the application will run
+
+Assembly language enables programmers to directly create instruction code progra
+ms without having to worry about the many different instruction code set combina
+tions on the processor. Instead, an assembly language program uses mnemonics to 
+represent instruction codes
+
+Different assemblers use different mnemonics to represent instruction codes
+
+HLLs use variables to define sections of memory to hold data
+
+Each data type occupies a specific number of bytes, starting at the memory locat
+ion reserved for the label
+
+The memory locations are referenced within the assembly language program based o
+n the label used to define the starting location
+
+Directives are commands that are part of the assembler syntax but are not relate
+d to the x86 processor instruction set
+
+Directives are preceded by a period to set them apart from labels
+
+All assembly language programs have at least three sections that must be declare
+d: a data section, a bss section, a text section
+
+The downside of using high level languages is that the programmer is dependant o
+n the compiler creator to convert programmiing logic to the instruction code run
+ by processor
+
+Often, the whole point of using assembly language is to exploit low-level featur
+es of the processor within your application program
+
+Processor is connected to other elements of the computer (the memory storage uni
+t, input devices, output devices) using three separate buses: a control bus, an 
+address bus, and a data bus
+
+The micro-operation is the code that controls the specific signals within the pr
+ocessor chip to perform the function of the instruction code
+
+By minimizing branches in programs, you can help speed up the execution of the i
+nstruction codes in your program
+
+The registers are capable of storing data elements for processing without having
+ to access the memory storage unit
+
+Each new version of general-purpose registers is created to be completely backwa
+rdly compatible with previous processors
+
+The processor translates a logical address to a corresponding linear address loc
+ation to access the byte of memory
+
+Instruction pointer register sometimes called the program counter
+
+The processor flags are used as a mechanism to determine whether operations were
+ successfull or not
+
+The assembler produces the instruction codes from source code created by the pro
+grammer
+
+The biggest difference between assemblers is the assembler directives. They inst
+ruct the assembler how to construct the instruction code program
+
+The GNU assembler, called gas, is the most popular cross-platform assembler avai
+lable for UNIX
+
+The process of linking objects involves resolving all defined functions and memo
+ry address labels declared in the program code
+
+Most assemblers do not automatically link the object code to produce the executa
+ble program file
+
+Similar to assemblers, debuggers are specific to the OS and hardware platform fo
+r which the program was written
+
+After converting the C or C++ source code to assembly language, the GNU compiler
+ uses the GNU assembler to produce the instruction codes for the linker
+
+Not all compilers include the assembler process
+
+To determine how much processing time each function is taking, you must have a p
+rofiler in your toolkit
+
+The GNU linked, ld, is used to link object code files into either executable pro
+gram files and library files
+
+gcc's -S parameter creates the intermediate assembly language file created by th
+e compiler, before the assembler assembles it
+
+GNU profiler (gprof) is used to analyze program execution and determine where "h
+ot spots" are in the application
+
+The operating system kernel is the software that interacts with the hardware and
+ handles the low-level function of an operating system, such as file access cont
+rol, and handlng memory and hardware interfaces
+
+When the assembly language program is converted to an executable file, the linke
+r must know what the starting point is in your instruction code
+
+To solve the problem of finding the initial point of program exection, the GNU a
+ssembler declared a default label, or identifier, that should be used for the en
+try point of the application. The _start label is used to indicate the instructi
+on from which the program should start running. In the linker cannot find this l
+abel, it will produce an error message
+
+The CPUID instruction code is used to gather information about the processor on 
+which the program is running. It is not easily performed from a high-level langa
+uge application
+
+While the GNU linker looks for the _start label to determine the beginning of th
+e program, gcc looks for the main label
+
+gcc's -gstabs flag provides a debugging information of outdated format, use -g f
+lag instead
+
+When specifying breakpoints in assembly language programs, you must specify the 
+location relative to the nearest label
+
+The .asciz directive adds the null character to the end of the defined string
+
+When you use C library functions in your assembly language program, you must lin
+k the C library files with the program object code
+
+Static linking creates huge executable programs, and wastes memory if multiple i
+nstances of the program are run at the same time (each instance has its own copy
+ of the same functions)
+
+On Linux systems, the standard C dynamic library is located in the file libc.so.
+x, where x is a value representing the version of the library
+
+To use C functions, the assembly language program must be linked with the C libr
+aries on the host system
+
+You are not limited to defining just one value on the directive statement line
+
+Each data element is placed in memory in the order it is defined in the data sec
+tion
+
+You are not limited to defining just one value on the directive statement line.
+
+You can define multiple values on the line, with each value being placed in memo
+ry in the order it appears in the directive.
+
+The lowest memory value contains the first data element
+
+The .equ directive is used to set a constant value to a symbol
+
+Instead of declaring specific data types, in .bss section you just declare raw s
+egments of memory that are reserved for whatever purpose you need them for
+
+Local common memory areas cannot be accessed by function outside of where they w
+ere declared (they can't be used in .globl directives)
+
+Immediate data is directly specified in the instruction code statement
+
+You can specify more than one value on a directive to place in memory. This crea
+tes a sequential series of data values placed in memory
+
+When referencing data in the array, you must use an index system to determine wh
+ich value you are accessing. The way this is done is called indexed memory mode 
+(base_address(offset_address, index, size))
+
+Accessing the data stored in the memory location using the pointer is called ind
+irect addressing
+
+While using a label references the data value contained in the memory location, 
+you can get the memory location address of the data value by placing a dollar si
+gn ($) in front of the label in the instruction
+
+The dollar sign before the label name instructs the assembler to use the memory 
+address, and not the data value located at the address
+
+With the parantheses around one of the operands, the instruction instead moves t
+he value to the memory location that is contained in this operand (if the MOV co
+mmand is used, of course)
+
+Conditional move instructions work result is based on the current values in the 
+EFLAGS register
+
+The CMP instruction substracts the first operand from the second and sets the EF
+LAGS registers appropriately
+
+The BSWAP produces a big-endian value from a little-endian value, and vise versa
+
+Any data elements declared in data section are reserved in memory and can be man
+upulated by instructions in the assembly language program
+
+The label has no meaning to the processor; it is just a place for the assembler
+to use as a reference point when trying to access the memory location
+
+The bottom of the stack (or top of memory) contains data elements placed there b
+y the OS when the program is run. Any command-line parameters used when running 
+the program are entered onto the stack, and the stack pointer is set to the bott
+om of the data elements. Following that is the area where you can place your pro
+gram data
+
+Memory access is one of the slowest functions the processor performs
+
+If you have a lot of similarly sized data elements, such as integer and floating
+-point values, place them together at the beginning of the data section, place t
+hem together at the beginning of the data section. This ensures that they will m
+aintain the proper alignment
+
+The instruction pointer is the traffic cop for the processor. It determines whic
+h instruction in the program is the next in line to be executed
+
+Your program cannot directly modify the instruction pointer
+
+In assembly language programs, jump instructions are not considered bad programm
+ing, and in fact are required to implement many functions
+
+When the jmp instruction is executed, the instruction pointer is loaded with the
+ memory address of the label itself
+
+Branch instructions greatly impact the performance of application
+
+CMOV instructions were designed to help assembly language programmers to elimina
+te branches to increase program by avoiding a bunch of jump instructions to set 
+data values
+
+Optimizing tips for branch instructions:
+1) Eliminate branches
+2) Code predictable branches first
+3) Unroll loops
+
+Allow the jump instruction to jump to the less likely used code segments
+
+While loops are generally covered by the backward branch rule, there is still a 
+performance penalty even when they are predicted correctly. Even a simple loop r
+equires a counter that must be checked for each iteration, and a jump instructio
+n that must be evaluated. Depending on the number of program logic instructions 
+within the loop, this can be a huge overhead
+
+When converting unsigned integer values to a larger bit size, you must ensure th
+at all of the leading bits are set to zero
+
+MOVZX moves a smaller-sized unsigned integer value to a larger-sized unsigned in
+teger value. It also zero outs the higher order bits
+
+To extend signed integer values, we must copy sign bit to the all appended bits
+
+Intel has provided the MOVSX instruction to allow extending signed integers and 
+preserving the sign
+
+The ADD instruction is used to add two integer values. As with other GNU assembl
+er instructions, you must specify the size of the operands by adding b, w, or l 
+to the end of the ADD mnemonic
+
+The benefit of using two's complement to represent negative numbers is that the 
+same hardware can be used to add signed and unsigned integers
+
+With substraction, the carry flag is set when the substraction result becomes to
+o large of a negative value for the data size
+
+The processor does not know if you are using unsigned or signed integers. It is 
+up to your program to determine when a value is outside of the range of the unsi
+gned (or signed values)
+
+The SBB instruction utilizes the carry and overflow flags in multibyte substract
+ions to implement the borrow feature across data boundaries
+
+Unlike addition and substraction, multiplication requires separate instructions 
+for operating on unsigned and signed integers
+
+MUL: For one thing, the destination location always uses some form of the EAX re
+gister, depending on the size of the source operand
+
+Due to the large values that can result from the multiplication, the destination
+ location of the MUL instruction must be twice the size of the source operand
+
+For larger values, the IMUL instruction is only valid for signed integers
+
+Similar to multiplication, division requires using a specific instruction depend
+ing on whether you are using unsigned or signed integers
+
+? During each pass through the loop, arg takes on the value of each successive v
+ariable in the list
+
+? Omitting the in [list] part of a for loop causes the loop to operate on $@
+
+? The output of a for loop may be piped to a command or commands
+
+? There is an alternative syntax to a for loop that will look bery familiar to C
+ programmers. This requires double parentheses
+
+Remember the little-endian order in memory versus the big-endian order in regist
+ers (IA-32)!!!
+
+Multiplying and dividing are two of the most time-consuming operations on the pr
+ocessor
+
+Any bits that are shifted out of the data size are first placed in the carry fla
+g, and then dropped in the next shift
+
+To solve the problem of right shifiting signed integer values, there are two rig
+ht-shift instructions, SHR and SAR
+
+Any bits shifted out of the data element (the least significant bits) are first 
+moved to the carry flag, and then shifted out (lost)
+
+The most efficient way to clear out the register is to exclusive OR the register
+ with itself using the XOR instruction
+
+The TEST instruction performs a bit-wise logical AND between 8-,16-,32-bit value
+s, and sets the sign, zero, and parity flags accordingly, without modifying the 
+destination value
+
+PUSHFL and POPFL instructions are used to retrieve EFLAGS value
+
+Inter has created a complete family of instructions to use when working with str
+ing data
+
+The MOVS instruction was created to provide a simple way for programmers to move
+ string data from one memory location to another
+
+The MOVS instruction use implied source and destination operands. The implied so
+urce operand is the ESI register. It points to the memory location for the sourc
+e string. The implied destination operand is the EDI register. It points to the 
+destination memory location to which the string is copied
+
+Each time a MOVS instruction is executed, when the data is moved, the ESI and ED
+I registers are automatically changed in preparation for another move
+
+Use CLD and STD commands to ensure that the DF flag is set or unset
+
+Even though ESI and EDI registers are counting backward, the MOVW and MOVL instr
+uctions are getting memory locations in forward order. The way to prevent any pr
+omblems that may occur with such a feature is to consistently use the same size 
+blocks to move for every instruction
+
+The SCAS instruction provides a way for you to scan a string looking for a speci
+fic character, or group of characters
+
+While the SCASW and SCASL instructions don't work well with strings, they are us
+eful when searching for nonstring data sequences in data arrays
+
+To define a function is the GNU assembler, you must declare the name of the func
+tion as a label in the program. To declare the function name for the assembler, 
+use the .type directive
+
+The end of the function is defined by a RET instruction
+
+Remember that the function has full access to the memory locations defined by th
+e main program
+
+Once the function is created, it can be accessed from anywhere in the program
+
+Remember to place any input values in the appropriate locations before the CALL 
+instruction
+
+The C solution for passing input values for functions is to use the stack
+
+The C style requires placing parameters on the stack in reverse order from the p
+rototype for the function. A way of placing function output and input value is c
+alled C style because most C compilers use this method in assembly language code
+ compiled from C functions
+
+When the CALL instruction is executed, it places the return address from the cal
+ling program onto the top pf the stack as well, so the function knows where to r
+eturn
+
+Copying ESP register to EBP register when entering the function ensures that the
+re is a register that always contains the correct pointer to the top of the stac
+k when the function is called
+
+Resetting the ESP register value ensures that any data placed on the stack withi
+n the function but not cleaned off will be discarded when execution returns to t
+he main program (otherwise, the RET instruction could return to the wrong memory
+ location)
+
+The ENTER and LEAVE instructions are specifically designed for setting up functi
+on prologues and epilogues
+
+When control is returned, the ESP value is then increased by four to remove the 
+radius value pushed onto the stack
+
+When you assemble function code file with no debugging information, in the debug
+ger session stepping through it looks like stepping through a single instruction
+
+Each program is assigned the same virtual memory addresses. That addresses are m
+apped to physical memory addresses by the OS
+
+Linux not only loads the strings into the stack, it also loads pointers to each 
+of these elements into the stack, so you can easily locate them in your program
+
+The first value in the stack indicates the number of command-line parameters (in
+cluding the program name). The next memory locations contain pointers to the pro
+gram name and command-line parameter strings as stored later in the stack
+
+Be careful: It is important to remember that all command-line parameters are spe
+cified as strings, even if they look like numbers
+
+After the command-line parameters, a 4 byte (8 in x86-64) null value is placed o
+n the stack to separate them from the start of the pointers to the environment v
+ariables
+
+Because C style functions are completely self-contained, they can be created in 
+separate source code files and assembled separately from the main program
+
+Any device that the Linux system must communicate with needs driver code inserte
+d into the kernel code
+
+Hardware devices are identified on the UNIX server as special device files. Ther
+e are 3 different classications of device files: character, block, network
+
+The Linux kernel interfaces with each file system using the Virtual File System 
+(VFS). This provides a standard interface for the kernel to communicate with any
+ type of file system
+
+When the INT instruction is performed, all operations transfer to the system cal
+l handler in the kernel
+
+Unline C style functions, where the input values are placed on the stack, system
+ calls require that input values be placed in registers. The order in which inpu
+t values for system calles are placed in the registers is important
+
+The parameter numbers are set left to right as they appear in the synopsys
+
+The return value from the system call is placed in the EAX register
+
+typedef (or a synonym)
+
+Two labels in a row points to the same memory location
+
+The C library functions are documented in section 3 of the man pages
+
+C style functions use the stack to pass input values. This also holds true for C
+ library functions. All input parameters are placed on the stack in the opposite
+ order from which they are listed in the synopsis for the function
+
+The C library functions perform their magic by using the underlying system calls
+ as well
+
+The technique of placing assembly language programs directly within C and C++ la
+nguage programs is called inline assembly
+
+To view the assembly language code generated by the compiler, compile using the 
+-S option
+
+Inline assembly gives you a greater control over how certain functions are imple
+mented at the assembly language level of the final program
+
+The GNU C compiler uses the asm keyword to denote a section of source code that 
+is written in assembly language
+
+The compiler takes the assembly code in the asm section verbatim and places it w
+ithin the assembly code generated for the program
+
+The asm section can be placed anywhere within the C or C++ source code
+
+Only globally defined variables can be used within the basic inline assembly cod
+e
+
+The volatile modifier can be placed in the asm statement to indicate that no opt
+imization is desired on that section of code
+
+If you're writing code using the ANSI C conventions, you must use the __asm__ ke
+yword instead of the normal asm keyword (the __asm__ keyword can also be modifie
+d using the __volatile__ modifier)
+
+The GNU compiler provides an extended format for the asm section that helps solv
+e the problems of basic inline assembly format
+
+In the extended format, you can assign input and output values from both registe
+rs and memory locations. Both local and global variables can be used
+
+In addition to these constraints, output values include a constraint modifier
+
+In extended asm format, to reference a register in the assembly code you must us
+e two percent signs instead of just one

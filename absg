@@ -1,0 +1,141 @@
+Quoting a variable preserves whitespace
+
+Variable referencing disables (escaped) by single quotes, which causes the "$" t
+o be interpreted literally
+
+Un initialized variable has a "null" value -- no assigned value at all (not zero
+!)
+
+An uninitialized variable has no value, however it evaluates as 0 in ar arithmet
+ic operation
+
+The special variables $* and $@ denote all the positional parameters
+
+shift operation is not a parameter *copy*, but a *move*
+
+A character is "special" if it has an interpretation other than its literal mean
+ing
+
+Within single quotes, `every special character except ' gets interpreted literal
+ly
+
+Escaping is a method of quoting single characters
+
+Elements of a string assigned to a variable may be escaped, but the escape chara
+cter alone may not be assigned to a variable
+
+An escape at the end of a line escapes the newline character
+
+Command [ is a synonym for test, and a builtin for efficiency reasons
+
+Note that the exit status of an arithmetic expression is not an error value
+
+An if can test any command, not just conditions enclosed within brackets
+
+Keywords (or commands) begin statements, and before a new statement on the same 
+line begins, the old one must terminate
+
+[ does not call /usr/bin/[, which is linked to /usr/bin/test (like bash builtin 
+test does not call /usr/bin/test binary
+
+The main reason why there is an external binary test is programs which need to e
+xecute a test and which is not a shell or a shell with no such a builtin command
+
+No filename expansion or word splitting takes place between [[ and ]], but there
+ is parameter expansion and command substitution
+
+Keywords (or commands) begin statements, and before a new statement on the same 
+line begins, the old one must terminate
+
+The (()) construct expands and evaluates an arithmetic expression
+
+Integer and string comparison use a different set of operators
+
+Bash permits integer operations and comparsions on variables whose value consist
+s of all-integer characters
+
+The [ ... ] operator alone detects whether the string is null. However it is a g
+ood practice to quote it (if [ "$string" ])
+
+Apparently && and || are "short-circuit" while -a and -o do not
+
+Bash does not understand floating point arithmetic. It treats numbers containing
+ a decimal point as strings
+
+Bash tests the exit status of each statement linked with a logical operator
+
+The -a and -o options provide an alternative compound condition test
+
+A shell script interprets a number as decimal (base 10), unless that number has 
+a special prefix or notation
+
+Similar to the let command, the ((...)) construct permits arithmetic expansion a
+nd evaluation. This construct is also a mechanism for allowing C-style manipulat
+ion of variables in Bash
+
+Evaluation of "condition1" and "condition2" happens before ANDing them. Why? Bec
+ause the AND (-a) has a lower precedence than the -n and -gt operators
+
+Builtin variables are variables affecting bash script behavior. This does not me
+an the variable changes the script's logic (like an if statement would). Instead
+, these built-in variables changes how Bash itself processes and executes the sc
+ript. They may configurate some behaviour, give some information and etc
+
+When the script exits, this restores the original $PATH (A child process, such a
+s a script, may not change the environment of the parent process, the shell)
+
+$REPLY holds the value of last "read" if and only if no variable supplied
+
+The $@ and $* parameters differ only when between double quotes
+
+The declare or typeset builtins, which are exact synonyms, permit modifying the 
+properties of variables. This is a very weak form of typing
+
+Bash supports a surprising number of string manipulation operations
+
+Only ${} form can be used for concatenating variables with strings
+
+${parameter-default} and ${parameter:-default} are almost equivalent. The extra 
+: makes a difference only when parameter has been declared, but is null
+
+The default parameter construct finds use in providing "missing" command-line ar
+guments in scripts
+
+Only the final condition in while loop determines when the loop terminates
+
+The break command may optionally take a parameter. A plain break terminates only
+ the innermost loop in which it is embedded, but break N breaks out of N levels 
+of loop. Continue command has the same mechanism
+
+Command substitution reassigns the output of a command or even multiple commands
+; it literally plugs the command output into another context
+
+$() is an alternative form of ``
+
+Command substitution invokes a subshell
+
+Command substitution permits setting a variable to the output of a loop
+
+The use of backticks (backquotes) in arithmetic expansion has been superseded by
+ double parantheses -- ((...)) and $((...)) -- and also by the very convenient l
+et construction
+
+$((EXPRESSION)) is arithmetic expansion. Not to be confused with command substit
+ution
+
+((...)) construction is used for evaluating expression, but it does not return i
+t's value. It is used as a command and return return code (0,1)
+
+A builtin is a command contained within the Bash toolset, literally built in
+
+Generally, a Bash builtin does not fork a subprocess when it executes within a s
+cript
+
+A builtin may be a synonym to a system command of the same name, but Bash reimpl
+ements it internally
+
+Data entry for read command terminates with the first <ENTER>
+
+A while loop may have its stdin redirected to a file by a < at its end
+
+

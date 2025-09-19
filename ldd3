@@ -1,0 +1,9 @@
+User activities are performed by means of a set of standardized calls that are i
+ndependent of the specific driver; mapping those calls to device specific operat
+ions that act on real hardware is then the role of the device driver
+
+When writing drivers, a programmer should pay particular attention to this funda
+mental concept: write kernel code to access the hardware, but dont force particu
+lar policies on the user, since different users have different needs
+
+

@@ -1,0 +1,463 @@
+All scalars have a truth value
+
+Scalar types include all numerical types and pointer types
+
+Left-binding rule
+
+do always needs a semicolon ; after the while (condition) to terminate the
+statement
+
+The fact that the controlling expression of a for (the middle part between ;;)
+can be ommited and is interpreted as "always true" is just a historical atrifact
+in the rules of C and has no other special purpose
+
+The case and default labels serve as jump targets
+
+case values must be integer constant expressions
+
+Arithmetic on size_t implicitly does the computation %(SIZE_MAX+1)
+
+Operators must have all their characters directly attached to each other
+
+++i is equivalent to i += 1
+
+All these assignment operators are real operators. They return a value (but not
+an object!): the value of the object after the modification
+
+Side effects in value expressions are evil
+
+The postfix operations return the value before the operation and perform the
+modification of the object thereafter
+
+Comparsion operators return the value false or true
+
+Several operators yield a value 0 or 1, depending on whether some condition if
+verified. They can be grouped in two categories: comparsions and logical
+evaluation
+
+Comparsion operators return the value false or true. Remember that false and
+true are nothing more than fancy names for 0 and 1, respectively
+
+Logical operators return the value false or true
+
+The operators && and || have a particular property called short-circuit
+evaluation
+
+The ternary operator is similar to an if statement, but it is an expression that
+returns the value of the chosen branch
+
+The only operators that sequence their operands are &&, ||, ?: and ,
+
+C programs primarly reason about values and not about their representation
+
+Your C compiler is allowed to shortcut any of the steps during a process called
+optimization only if it ensures the realization of the end result
+
+For an optimization to be valid, it's only important that a C compiler produces
+and executable that reproduces the observable states
+
+All values are numbers or translate to numbers
+
+A type is an additional property that C associates with values
+
+Portability is compliance with the standard on any hardware
+
+All computation is fixed through the values, types, and their binary
+representations that are specified in the program. The program text describes an
+ abstract
+state machineC that regulates how the program switches from one state to the nex
+t. These
+transitions are determined by value, type, and binary representation only.
+
+This allowed slackness between program description and abstract state machine is
+a very valuable feature, commonly referred to as optimization
+
+Type determines optimization opportunities
+
+The program text describes an abstract state machine
+
+Type char is special since it can be unsigned or signed, depending on the
+platform
+
+Before arithmetic, narrow integer types are promoted to signed int
+
+The C standard doesn't prescribe the precision of these 12 base types: it only
+constraints them
+
+For arithmetic or comparsion or logic operations, the narrow unsigned types are
+promoted to signed int and not to unsigned int
+
+Use ptrdiff_t for large differences that bear a sign (size differences)
+
+Consecutive string literals are concatenated
+
+Numerical literals are never negative
+
+Decimal integer constants are signed
+
+The same value can have different types
+
+!! Don't use octal or hexadecimal constants to express negative values, use
+decimal constants instead
+
+Different literals can have the same value
+
+0 is important. It is so important that it has a lot of equivalent spellings: 0,
+0x0, '\0'. 0 has no decimal integer spelling. 0.0 is a decimal speling for
+
+in c, string literals were of type char[] because the word const did not exist i
+n the language at the time string literals were mapped. Since these literals are
+ read-only in memory, this formulation leaves an inconsistency between the imple
+mentation and the language. later, when the language adopted the const keyword, 
+changing existing code was impossible due to the backward compatibility that the
+ c standard is so concerned about. that is, if you fix the language so that stri
+ng literals are of type const char[], then existing code will break. for example
+, functions waiting for char[]. but using const char * gives is this just a conv
+ention? yes! a convention that explicitly specifies read-only
+
+Pointers are opaque objects. This means we will only be able to deal with pointe
+rs through the operations that the C language allows for them
+
+An immediate failure of the program is often the best way to ensure that bugs ar
+e detected and get fixed early in development
+
+Bounds-checking interfaces if Annex K are regulated by these macros: __STDC_LIB_
+EXT1__ and __STDC_WANT_LIB_EXT1_
+
+The bound-checking functions usually use the suffix _s
+
+Preconditions for the execution platform are arhieved with preprocessor conditio
+nals
+
+In preprocessor conditions, unknown identifiers evaluate to 0
+
+The type int as a parameter for putchar is a historical accident and shouldn't h
+ur you much
+
+The identifier FILE represents an opaque type
+
+Text input and output converts data
+
+There are three commonly used conversions to encode end of line
+
+fgets returns int to be able to encode a special error status, EOF, in addition 
+to all valid characters
+
+End of file (EOF) can only be detected after a failed read
+
+Integer character constants can also be encoded numerically
+
+Regular program termination should use a return from main
+
+Use exit from a function that may terminate the regular control flow
+
+Use as many assert s as you can to confirm runtime properties
+
+In production compilation, use NDEBUG to switch off all assert
+
+Dont pollute the global space of identifiers. Expose only types and functions th
+at are part of the application programming interface: that is, those that are su
+pposed to be used by users of your code
+
+Good naming is more important the more widely an identifier is used
+
+A global variable identifies state
+
+A function or functional macros identifies an action
+
+The distinction between interface specification and implementation is expecially
+ important, so !separate interface and implementation
+
+^^ This rule is reflected in the use of two different kinds of C source files: h
+eader files, usually ending with .h; and translation units, ending with .c
+
+Document the interface - explain the implementation
+
+Good programming only needs to explain the ideas and prerequisited that are not 
+obvious. The structure of the code shows what is does and how
+
+The else-clause is attached to the innermost if
+
+A function that is pure only interacts with the rest of the program via its inte
+rface
+
+Macros should be used for initialization constants or used to implement compiler
+ magic
+
+Effects that would disqualify a function from being pure would be all those that
+ change the abstract state machine other than by providing the return value
+
+Express small tasks as pure functions whenever possible
+
+The function and type interfaces are the essence of software design. Changing th
+em later is expensive 
+
+A valid pointer referes to the first element of an array of the reference type
+
+Unfortunately, there is no way to know the length of the array that is hidden be
+hind a pointer, so we have to pass it as a parameter into a function
+
+The length of an array object cannot be reconstructed from a pointer
+
+printf: C-L abbreviation: *C*onversion type *L*eads, *L*ength modifier *L*imits
+
+All pointer differences have type ptrdiff_t. Use this type to encode signed diff
+erences of positions or sizes
+
+Accessing an objecr that has a trap representation of its type has undefined beh
+aviour
+
+A pointer must point to a valid object or one position beyond a valid object or 
+be null
+
+An integer constant expression with the value 0, or such an expression cast to t
+ype void *, is called a null pointer constant. If a null pointer constant is con
+verted to a pointer type, the resulting pointer, called a null pointer, is guara
+nteed to compare unequal to a pointer to any object or function
+
+NULL hides more than it clarifies => Don't use NULL
+
+Opaque structures are often used to strictly separate the interface of a library
+ and its implementation
+
+All pointers to structures have the same representation
+
+Don't hide pointers in a typedef
+
+(array decay *one of the most important rules in C*) Evaluation of an array A re
+turns &A[0]. In fact, this is the reason there are no "array values" and all the
+ difficulties they entail 
+
+In a function declaration, any array parameter rewrites to a pointer
+
+Observe than once we have rewritten the innermost dimension as a pointer, the pa
+rameter type is not an array anymore, but a pointer to array. So there is no nee
+d to rewrite the subsequent dimensions => Takeaway. Only the innermost dimension
+ of an array is rewritten
+
+Declare length parameters before array parameter
+
+The validity of array arguments of functions must be guaranteed by the programme
+r
+
+A function f without a following opening ( decays to a pointer to its start
+
+Function pointers must be used with their exact type (there is no catch-all poin
+ter type as for object types (void*))
+
+Calling functions and function pointers with the (...) operator has rules simila
+r to those for arrays and pointers and the [...] operator: The function call ope
+ator (...) applies to function pointers
+
+The first, “natural” call has a hidden evaluation of the f identifier that r
+esults in the function pointer
+
+In addition to providing a virtual view of physical memory, the memory model als
+o simplifies the view of object themselves. It makes the assumption that each ob
+ject is a collection of bytes, the object representation
+
+sizeof(char) is 1 by definition
+
+The sizeof operator can be applied to objects and object types
+
+Object representation of an unsigned value: all its representation digits
+
+The in-memory order of the representation digits of an erithmetic type is implem
+entation defined
+
+The phenomenon of accessing the same object through different pointers is called
+ aliasing
+
+The object representation provides a view of an object X as an array unsigned ch
+ar[sizeof X]
+
+Any object pointer converts to and from void*
+
+The only thing we lose when converting to void* is the type information; the val
+ue remains intact
+
+Only two forms of implicit conversions are permitted for data pointers: conversi
+ons from and to void*, and conversions that add a qualifier to the target type
+
+Don't use casts
+
+The effective type of a variable or compound literal is the type of its declarat
+ion
+
+Any object can be seen as being composed of unsigned char, but no array of unsig
+ned char s can be used through another type
+
+The alignment of a type then describes the possible byte positions at which an o
+bject of that type can start
+
+Don't cast the return of malloc and friends
+
+Storage that is allocated through malloc is uninitialized and has no type. Only 
+after initialization it gets an effective type and value
+
+For every allocation, there must be a free <=> For every free, there must be a m
+alloc, calloc, aligned_alloc, or realloc
+
+When we talks about visibility, we means identifier; when we talks about lifetim
+e, we means object
+
+Declarations that are tagged with the storage class `extern' always designate an
+ object of static storage duration that is expected to be defined at file scope
+
+Every definition of a variable creates a new, distinct object
+
+Read-only object literals may overlap (compound literals & string literals)
+
+Objects have a lifetime outside of which they can't be accessed. Referring to an
+ object outside of its lifetime has UB
+
+4 different storage durations for objects in C are: static, automatic, allocated
+, thread
+
+Linkage is a property of identifiers, not of objects they represent
+
+Because object with static storage duration considered alive before any applicat
+ion code is executed, they can only be initialized with expressions that are kno
+wn at compile time or can be resolved by the system's process startup procedure
+
+Objects with static storage duration are always initialized
+
+Unless they are VLA or temporary objects, automatic objects have a lifetime corr
+esponding to the execution of their block of definition
+
+The & operator is not allowed for variables declared with register
+
+Arrays with storage class register are useless
+
+The only reason objects with temporary exist in C is to be able to access member
+s of such a function return value. Don't use them for anything else
+
+Objects of temporary lifetime are read-only
+
+Temporary lifetime ends at the end of the enclosing full expression. That is, th
+eir life ends as soon as the evaluation in which they occur is terminated. Compa
+re this to the difinition of a compound literal: a compound literal would live o
+n until the enclosing scope is lefr by program execution (compound literal anony
+mously allocates on the stack)
+
+For an object that is not a VLA, lifetime starts when the scope of the definitio
+n is entered, and it ends when that scope is left
+
+Initializers of automatic variables and compound literals are evaluated each tim
+e the definition is met
+
+For a VLA, lifetime starts when the definition is encountered and ends when the 
+visibility scope is left
+
+The storage duration of an object determines how it is initialized
+
+A default initialization is the same as initializing all members of an object by
+ 0
+
+Systematically provide an initialization function for each of your data types
+
+Identifier visibility and storage duration are different things
+
+Use snprintf when formatting output of unknown length
+
+When called with n and s set to 0, snprintf just returns the length of the strin
+g that would have been written
+
+A multibyte character is a sequence of bytes that is interpreted as representing
+ a single character of the extended character set, and a multibyte string is a s
+tring that contains such multibyte characters
+
+Multibyte character don't contain null bytes, but multibyte strings are null ter
+minated
+
+Unfortunately, the C standard imposes only EOF (which is negative) and EDOM, EIL
+SEQ, and ERANGE, which are positive. So, it makes sense to declare some macroses
+ by yourself to provide missing values in error return situations. But be aware,
+ that values must not be repeated
+
+If we want to capture and repair all errors, we have to avoid any change to the 
+global state of the execution, including to errno.
+
+The rules for goto is relatively simple:
+Labels for goto are visible in the entire function that contains them
+goto can only jump to a label inside the same function
+goto should not jump over variable initializations
+
+The main idea of good goto using is to have the "normal" control flow of the fun
+ction be mainly undisturbed and to clearly mark changes to the control flow that
+ only occur under exceptional circumstances with a goto or return
+
+Premature optimization can do a great deal of harm in terms of readability, soun
+dness, maintainability, and so on
+
+Premature optimization is the root of all evil [Knuth (1974)]
+
+Do not trade off safety for performance
+
+Functions that receive pointers should use array syntax and distinguish differen
+t cases
+
+The different notations of pointer arguments of functions result in the same bin
+ary code
+
+There are many situation in which we can help out compiler (and future versions 
+of it) to optimize code better, because we can specify certain properties of out
+ code that is can't deduce automatically. The keywords that introduce these opti
+mization opportunities are register (C90), inline, restrict (both from C99), and
+ alignas (respectively, C11)
+
+Register keyword allows the programmer to prevent aliasing of local objects
+
+.. Control flow jumps to a different point in the executable, which might or mig
+ht not be in the execution cache
+
+Inlining can open up a lot of optimization opportunities
+
+Adding a compatible declaration without the inline keyword ensures the emission 
+of the function symbol in the current TU
+
+An inline function definition is visible in all TUs
+
+The function may be inlined by the compiler in all TUs that see this code, but n
+one of them would effectively emit the symbol of inlining function
+
+An inline definition goes in a header file
+
+An additional declaration without inline goes in exactly one TU
+
+Only expose functions as inline if you consider them to be stable
+
+All identifiers that are local to an inline function should be protected by a co
+nvenient naming convention
+
+inline functions can't access identifiers of static functions
+
+inline functions can't define of access identifiers of modifiable static objects
+
+A restrict-qualified pointer has to provide exclusive access
+
+Whenever possible, prefer an inline function to a functional macro
+
+A functional macro shall provide a simple interface to a complex task
+
+The parameters of a macro must be identifiers
+
+Identifiers of macros (function-like or not) live in a namespace of their own
+
+(macro retention) If a functional macro is not followed by (), it is not expande
+d
+
+The trick is to use something like ((T){ 0 } = (X)) to check whether X is assign
+ment-compatible to type T
+
+Using __LINE__ is inherently dangerous
+
+If a special C operator # appears before a macro parameter in the expansion stri
+ng, the actual argument to this parameter is stringified: that is, all its textu
+al content is placed into a string literal
+
+Stringification with the operator # does not expand macros in its argument
+
+Stringification kicks in before argument replacement
+
+
