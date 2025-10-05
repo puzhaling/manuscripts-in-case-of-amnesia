@@ -1,38 +1,56 @@
 Routers are the building blocks of WANs. The largest WAN today is the Internet
 
-TCP itself provides no record markers: If an application wants to delineate the ends of records, it must do so itself and there are a few common ways to accomplish this
+TCP itself provides no record markers: If an application wants to delineate the 
+ends of records, it must do so itself and there are a few common ways to accompl
+ish this
 
-Iterative server iterates through each client, one at a time. On the other side is a concurrent server
+Iterative server iterates through each client, one at a time. On the other side 
+is a concurrent server
 
-Raw sockets allows applications to bypass transport layer and use IPv4 and IPv6 directly
+Raw sockets allows applications to bypass transport layer and use IPv4 and IPv6 
+directly
 
-Sockets provide the interface from the upper three layers of the OSI model into the transport layer
+Sockets provide the interface from the upper three layers of the OSI model into 
+the transport layer
 
 The sockets API originated with the 4.2BSD system, released in 1983
 
-SCTP is similar to TCP as a reliable transport protocol, but it also provides message boundaries, transport-level support for multihoming, and a way to minimize head-of-line blocking
+SCTP is similar to TCP as a reliable transport protocol, but it also provides me
+ssage boundaries, transport-level support for multihoming, and a way to minimize
+ head-of-line blocking
 
-Although the protocol suite is called "TCP/IP", there are more members of this family than just TCP and IP
+Although the protocol suite is called "TCP/IP", there are more members of this f
+amily than just TCP and IP
 
 ARP (Address Resolution protocol) maps an IPv4 address into a hardware address
 
 A segment is the unit of data that TCP passes to IP
 
-A TCP connection is full-duplex. This means that an application can send and receive data in both directions on a given connection at any time
+A TCP connection is full-duplex. This means that an application can send and rec
+eive data in both directions on a given connection at any time
 
-While it takes three segments to establish a connection, it takes four to terminate a connection
+While it takes three segments to establish a connection, it takes four to termin
+ate a connection
 
-The MSL is the maximum amount of time that any given IP datagram can live in network
+The MSL is the maximum amount of time that any given IP datagram can live in net
+work
 
-Unix systems have the concept of a reserved port, which is any port less than 1024. These ports can only be assigned to a socket by an appropriately privileged process. All the IANA well-known ports are reserved ports
+Unix systems have the concept of a reserved port, which is any port less than 10
+24. These ports can only be assigned to a socket by an appropriately privileged 
+process. All the IANA well-known ports are reserved ports
 
-The socket pair for a TCP connection is the four-tuple that defines the two endpoints of the connection: the local IP address, local post, foreign IP address, and foreign port
+The socket pair for a TCP connection is the four-tuple that defines the two endp
+oints of the connection: the local IP address, local post, foreign IP address, a
+nd foreign port
 
-The two values that identify each endpoint, an IP address and a port number, are often called a socket
+The two values that identify each endpoint, an IP address and a port number, are
+ often called a socket
 
-The IPv4 DF bit and its implied IPv6 counterpart can be used for path MTU discovery
+The IPv4 DF bit and its implied IPv6 counterpart can be used for path MTU discov
+ery
 
-IPv4 and IPv6 define a minimum reassembly buffer size, the minimum datagram size that we are guaranteed any implementation must support
+IPv4 and IPv6 define a minimum reassembly buffer size, the minimum datagram size
+ that we are guaranteed any implementation must support
 
 TCP must keep a copy of our data until it is acknowledged by the peer
 

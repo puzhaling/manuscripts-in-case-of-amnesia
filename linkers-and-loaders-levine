@@ -14,41 +14,69 @@ ng past link time to load time. Linkers and loaders now divided up to work, with
 each program, and the loader doing a final relocation step to assign actual addr
 esses
 
-With the advent of hardware relocation (mmu, tlb, pages table) and virtual memory, linkers and loaders got less complex, since each program could again have an entire address space. Programs could be linked to be loaded at fixed addresses, with hardware rather than software relocation taking care of any load-time relocation.
+With the advent of hardware relocation (mmu, tlb, pages table) and virtual memor
+y, linkers and loaders got less complex, since each program could again have an 
+entire address space. Programs could be linked to be loaded at fixed addresses, 
+with hardware rather than software relocation taking care of any load-time reloc
+ation.
 
-Wow, it appears that assembly language code sections were invented, because there is a problem when multiple instances of programs were running each one could share the same executable unchanging parts that wasted expensive memory.
+Wow, it appears that assembly language code sections were invented, because ther
+e is a problem when multiple instances of programs were running each one could s
+hare the same executable unchanging parts that wasted expensive memory.
 
-Relocation is the process of assigning load addresses to the various parts of the program, adjusting the code and data in the program to reflect the assigned addresses
+Relocation is the process of assigning load addresses to the various parts of th
+e program, adjusting the code and data in the program to reflect the assigned ad
+dresses
 
-A linker resolves the symbol by noting the location assigned to sqrt in the library, and patching the caller's object code to so the call instruction refers to that location
+A linker resolves the symbol by noting the location assigned to sqrt in the libr
+ary, and patching the caller's object code to so the call instruction refers to 
+that location
 
-One important feature that linkers and loaders share is that they both patch object code
+One important feature that linkers and loaders share is that they both patch obj
+ect code
 
-Some systems require position independent code that will work correctly regardless of where in the address space it is loaded
+Some systems require position independent code that will work correctly regardle
+ss of where in the address space it is loaded
 
 Every linker has some sort of command language to control the linking process
 
-To produce an executable program, the linker combines these two object files with a standard startup initialization routine for C programs, and necessary routines from the C library, producing an executable file
+To produce an executable program, the linker combines these two object files wit
+h a standard startup initialization routine for C programs, and necessary routin
+es from the C library, producing an executable file
 
-Executable doesn't use the symbols and the symbols table can be stripped off to save space
+Executable doesn't use the symbols and the symbols table can be stripped off to 
+save space
 
-Two aspects of hardware architecture affect linkers: program addressing and instruction formats
+Two aspects of hardware architecture affect linkers: program addressing and inst
+ruction formats
 
 Multi-byte data must usually be aligned on a natural boundary
 
-An instruction operand may be encoded in the instruction itself (an immediate operand), or located in memory
+An instruction operand may be encoded in the instruction itself (an immediate op
+erand), or located in memory
 
-..Sometimes the address is contained in the instruction (direct addressing). More often the address is found in one of the registers (register indirect)
+..Sometimes the address is contained in the instruction (direct addressing). Mor
+e often the address is found in one of the registers (register indirect)
 
-The chunk of stack memory allocated for a single procedure call is known as a stack frame
+The chunk of stack memory allocated for a single procedure call is known as a st
+ack frame
 
-If pages can be marked as read-only, performance of virtual memory also improves. Read-only pages don't need to be paged out since they can be reloaded from wherever they came from originally
+If pages can be marked as read-only, performance of virtual memory also improves
+. Read-only pages don't need to be paged out since they can be reloaded from whe
+rever they came from originally
 
-Soon after the invention of paging, though, designers noticed that is was possible to unify the paging system (originally, paging all went to "anonymous" disk space separate from the named files in the file system) and the file system by using the paging system to read and write named disk files
+Soon after the invention of paging, though, designers noticed that is was possib
+le to unify the paging system (originally, paging all went to "anonymous" disk s
+pace separate from the named files in the file system) and the file system by us
+ing the paging system to read and write named disk files
 
-All the code in shared libraries is usually PIC, so the code can be mapped read-only
+All the code in shared libraries is usually PIC, so the code can be mapped read-
+only
 
-On the 8086 and 186, the architecture defined a fixed mapping from segment numbers to memory addresses by shifting the segment number four bits to the left. Segment number 0x123 would start at memory location 0x1230 for example. This simple addressing is known as real mode.
+On the 8086 and 186, the architecture defined a fixed mapping from segment numbe
+rs to memory addresses by shifting the segment number four bits to the left. Seg
+ment number 0x123 would start at memory location 0x1230 for example. This simple
+ addressing is known as real mode.
 
 Code and data pointers can be either near, with an offset value but no segment n
 umber, or far, with both segment and offset

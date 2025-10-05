@@ -140,39 +140,50 @@ A while loop may have its stdin redirected to a file by a < at its end
 
 Piping output to read, using echo to set variables will fail
 
-The familiar cd change directory command finds use in scripts where execution of a command requires being in a specified directory
+The familiar cd change directory command finds use in scripts where execution of
+ a command requires being in a specified directory
 
 At the script start, directory stack holds $PWD
 
 Let command with quotes permits using spaces
 
-Let command permits C-style operators just as the (( ... )) double-parantheses construct does
+Let command permits C-style operators just as the (( ... )) double-parantheses c
+onstruct does
 
 The set command changes the value of internal script variables / options
 
-The unset command deletes a shell variable, effectively setting it to null. Note that this command does not affect positional parameters
+The unset command deletes a shell variable, effectively setting it to null. Note
+ that this command does not affect positional parameters
 
-In most contexts, an undeclared variable and one that has been unset are equivalent
+In most contexts, an undeclared variable and one that has been unset are equival
+ent
 
-The export command makes available variables to all FUTURE child processes of the running script or shell via modifying the environment (see man 2 fork)
+The export command makes available variables to all FUTURE child processes of th
+e running script or shell via modifying the environment (see man 2 fork)
 
 The declare and typeset commands specify and\or restrict properties of variables
 
-An option is an argument that acts as a flag, switching script behaviors on or off
+An option is an argument that acts as a flag, switching script behaviors on or o
+ff
 
 Within a script, a source file-name loads the file file-name
 
-. $0 reads and executes commands from $0 in current context (loop); ./$0 executes a separate program (recursion)
+. $0 reads and executes commands from $0 in current context (loop); ./$0 execute
+s a separate program (recursion)
 
-Normally, when the shell encounters a command, it forks off a child process to actually execute the command
+Normally, when the shell encounters a command, it forks off a child process to a
+ctually execute the command
 
 shopt command permits changing shell options on the fly
 
-help. Gets a short usage summary of a shell builtin. This is the counterpart to whatis, but for builtins
+help. Gets a short usage summary of a shell builtin. This is the counterpart to 
+whatis, but for builtins
 
-Jobs are maintained by the current shell, whereas processes are maintained by the system
+Jobs are maintained by the current shell, whereas processes are maintained by th
+e system
 
-The killall command kills a running process by name, rather that by process ID (PID)
+The killall command kills a running process by name, rather that by process ID (
+PID)
 
 A filter is a command that transforms its input for processing
 
@@ -184,7 +195,8 @@ Unlike a hard link, a symbolic (soft) link can refer to a directory
 
 Every filename has an inode, a record that holds its physical address info
 
-touch - Utility for updating access/modification times of a file to a current system time or other specified time, but also useful for creating a new file
+touch - Utility for updating access/modification times of a file to a current sy
+stem time or other specified time, but also useful for creating a new file
 
 uniq - This filter removes duplicate lines from a sorted file
 
@@ -198,45 +210,59 @@ The cat "$@" construct permits input either from stdin or from files
 
 nl - A line numbering filter
 
-ar - A creation and manipulation utility for archives, mainly used for binary object file libraries
+ar - A creation and manipulation utility for archives, mainly used for binary ob
+ject file libraries
 
 file - A utility for identifying file types
 
-A checksum is a number mathematically calculated from the contents of a file, for the purpose of checking its integrity
+A checksum is a number mathematically calculated from the contents of a file, fo
+r the purpose of checking its integrity
 
-Bash can't handle floating point calculations, and it lacks operators for certain important mathematical functions. Fortunately, bc gallops to the rescue
+Bash can't handle floating point calculations, and it lacks operators for certai
+n important mathematical functions. Fortunately, bc gallops to the rescue
 
 tee utility is a redirection operator, but with a difference
 
-The id command lists the real and effective user IDs and the group IDs of the current user associated with the current process
+The id command lists the real and effective user IDs and the group IDs of the cu
+rrent user associated with the current process
 
 The file /etc/sudoers holds the names of users permitted to invoke sudo
 
 passwd command can be used to set, change, manage a user's password
 
-uname can be used to output system specifications (OS, kernel version, etc..) to stdout
+uname can be used to output system specifications (OS, kernel version, etc..) to
+ stdout
 
 pgrep, pkill commands allow to combine the ps command with grep or kill
 
-fuser. Identifies the processes (by PID) that are accessing a given file, set of files, or directory
+fuser. Identifies the processes (by PID) that are accessing a given file, set of
+ files, or directory
 
-Before physically removing a previously mounted floppy or CDROM disk, the device must be unmounted, else filesystem corruption may result
+Before physically removing a previously mounted floppy or CDROM disk, the device
+ must be unmounted, else filesystem corruption may result
 
-Regular Expressions are sets of characters and\or metacharacters that match (or specify) patterns
+Regular Expressions are sets of characters and\or metacharacters that match (or 
+specify) patterns
 
 The only way to be certain that a particular RE works is to test it
 
 Question sign matches zero or one of the previous RE
 
-POSIX Character Classes is an alternate method of specifying a range of characters to match
+POSIX Character Classes is an alternate method of specifying a range of characte
+rs to match
 
-Bash itself cannot recognize Regular Expressions. Inside scripts, it is commands and utilities -- such as sed and awk -- that interpret RE's. Bash does carry out filename expansion -- a process knows as globbing -- but this does not use the standard RE set. Instead, globbing recognizes and expands wildcards
+Bash itself cannot recognize Regular Expressions. Inside scripts, it is commands
+ and utilities -- such as sed and awk -- that interpret RE's. Bash does carry ou
+t filename expansion -- a process knows as globbing -- but this does not use the
+ standard RE set. Instead, globbing recognizes and expands wildcards
 
 Bash performs filename expansion on unquoted command-line arguments
 
-Here document has the effect of redirecting the output of a command block into the stdin of the program or command
+Here document has the effect of redirecting the output of a command block into t
+he stdin of the program or command
 
-Use ': > filename' instead '> filename', because the second construction does not work with some shells. '.' serves as a dummy placeholder, producing no output
+Use ': > filename' instead '> filename', because the second construction does no
+t work with some shells. '.' serves as a dummy placeholder, producing no output
 
 Operator M>&N redirects one file descriptor to another
 
@@ -244,9 +270,11 @@ Operator M>&N redirects one file descriptor to another
 
 0< FILENAME
  < FILENAME
-	Accept input from a file (reads it automatically). Companion command to ">", and often used in combination with it
+	Accept input from a file (reads it automatically). Companion command to 
+">", and often used in combination with it
 
-"command < input-file > output" file is the exact equivalent of "< input -file command > output-file", although this is non-standard
+"command < input-file > output" file is the exact equivalent of "< input -file c
+ommand > output-file", although this is non-standard
 
 Shell handles redirection from left to right. That's important!
 
