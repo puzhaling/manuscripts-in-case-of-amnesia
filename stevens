@@ -1,11 +1,39 @@
-Трехэтапное рукопожатие происходит при вызове accept. Когда оно состоялось, вызов возвращает значение, и это значение является новым дескриптором, который называется присоединенным дескриптором. Он используется для связи с клиентом.
+Routers are the building blocks of WANs. The largest WAN today is the Internet
 
-Сервер закрывает соединение с клиентом, вызывая функцию close (пакет FIN).
+TCP itself provides no record markers: If an application wants to delineate the ends of records, it must do so itself and there are a few common ways to accomplish this
 
-Распространненым способом описания уровней сети является предложенная Международной организацией по стандартизации модель взаимодействия открытых систем.
+Iterative server iterates through each client, one at a time. On the other side is a concurrent server
 
-Описанный в этой книге апи сокетов является интерфейсом между верхними тремя уровнями ("приложением") и транспортным уровнем.
+Raw sockets allows applications to bypass transport layer and use IPv4 and IPv6 directly
 
-Модель программирования (ILP32) - это соглашение о размерах базовых типов данных в 32-битных системах.
+Sockets provide the interface from the upper three layers of the OSI model into the transport layer
 
-Топология сети - это схема расположения и соединения узлов в сети. Она определяет, как устройства взаимодействуют между собой и как данные передаются.
+The sockets API originated with the 4.2BSD system, released in 1983
+
+SCTP is similar to TCP as a reliable transport protocol, but it also provides message boundaries, transport-level support for multihoming, and a way to minimize head-of-line blocking
+
+Although the protocol suite is called "TCP/IP", there are more members of this family than just TCP and IP
+
+ARP (Address Resolution protocol) maps an IPv4 address into a hardware address
+
+A segment is the unit of data that TCP passes to IP
+
+A TCP connection is full-duplex. This means that an application can send and receive data in both directions on a given connection at any time
+
+While it takes three segments to establish a connection, it takes four to terminate a connection
+
+The MSL is the maximum amount of time that any given IP datagram can live in network
+
+Unix systems have the concept of a reserved port, which is any port less than 1024. These ports can only be assigned to a socket by an appropriately privileged process. All the IANA well-known ports are reserved ports
+
+The socket pair for a TCP connection is the four-tuple that defines the two endpoints of the connection: the local IP address, local post, foreign IP address, and foreign port
+
+The two values that identify each endpoint, an IP address and a port number, are often called a socket
+
+The IPv4 DF bit and its implied IPv6 counterpart can be used for path MTU discovery
+
+IPv4 and IPv6 define a minimum reassembly buffer size, the minimum datagram size that we are guaranteed any implementation must support
+
+TCP must keep a copy of our data until it is acknowledged by the peer
+
+

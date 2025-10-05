@@ -14,4 +14,50 @@ ng past link time to load time. Linkers and loaders now divided up to work, with
 each program, and the loader doing a final relocation step to assign actual addr
 esses
 
+With the advent of hardware relocation (mmu, tlb, pages table) and virtual memory, linkers and loaders got less complex, since each program could again have an entire address space. Programs could be linked to be loaded at fixed addresses, with hardware rather than software relocation taking care of any load-time relocation.
+
+Wow, it appears that assembly language code sections were invented, because there is a problem when multiple instances of programs were running each one could share the same executable unchanging parts that wasted expensive memory.
+
+Relocation is the process of assigning load addresses to the various parts of the program, adjusting the code and data in the program to reflect the assigned addresses
+
+A linker resolves the symbol by noting the location assigned to sqrt in the library, and patching the caller's object code to so the call instruction refers to that location
+
+One important feature that linkers and loaders share is that they both patch object code
+
+Some systems require position independent code that will work correctly regardless of where in the address space it is loaded
+
+Every linker has some sort of command language to control the linking process
+
+To produce an executable program, the linker combines these two object files with a standard startup initialization routine for C programs, and necessary routines from the C library, producing an executable file
+
+Executable doesn't use the symbols and the symbols table can be stripped off to save space
+
+Two aspects of hardware architecture affect linkers: program addressing and instruction formats
+
+Multi-byte data must usually be aligned on a natural boundary
+
+An instruction operand may be encoded in the instruction itself (an immediate operand), or located in memory
+
+..Sometimes the address is contained in the instruction (direct addressing). More often the address is found in one of the registers (register indirect)
+
+The chunk of stack memory allocated for a single procedure call is known as a stack frame
+
+If pages can be marked as read-only, performance of virtual memory also improves. Read-only pages don't need to be paged out since they can be reloaded from wherever they came from originally
+
+Soon after the invention of paging, though, designers noticed that is was possible to unify the paging system (originally, paging all went to "anonymous" disk space separate from the named files in the file system) and the file system by using the paging system to read and write named disk files
+
+All the code in shared libraries is usually PIC, so the code can be mapped read-only
+
+On the 8086 and 186, the architecture defined a fixed mapping from segment numbers to memory addresses by shifting the segment number four bits to the left. Segment number 0x123 would start at memory location 0x1230 for example. This simple addressing is known as real mode.
+
+Code and data pointers can be either near, with an offset value but no segment n
+umber, or far, with both segment and offset
+
+An object file contains five kinds of information: header information, object co
+de, relocation, symbols, debugging information
+
+An object file can be linkable, executable, loadable
+
+A linkable file contains extensive symbol and relocation information needed by t
+he linker along with the object code
 
