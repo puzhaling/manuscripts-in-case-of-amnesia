@@ -280,4 +280,63 @@ Shell handles redirection from left to right. That's important!
 
 An "exec <filename" command redirects stdin to a file (see bash-builtins(7))
 
+Bash (but not sh) has arrays support
+
+Bash supports only one-dimentional arrays, though a little trickery permits simu
+lating multi-dimensional ones
+
+Indirect variable references (value of the value). The actual notation os \$$var
+, usually preceded by eval (and sometimes echo). A more straightforward method i
+s the ${!var} notation
+
+Bash does not support pointer arithmetic
+
+The /proc directory is actually a pseudo-filesystem. The files in /proc mirror c
+urrently running system and kernel processes and contain information and statist
+ics about them
+
+When a command sequence gets too complex, look for a shortcut
+
+Echo statements are useful for seeing whether what you expect is actually what y
+ou get
+
+Correct methods of deleting filenames containing spaces:
+rm *\ *
+rm *" "*
+rm *' '*
+# Thank you, S.C.
+
+trap builtin: Specifies an action on receipt of a signal; also useful for debugg
+ing
+
+Options are settings that change shell and/or script behavior
+
+The DEBUG argument to trap causes a specified action to execute after every comm
+and in a script
+
+trap '' SIGNAL disables SIGNAL for the remainder of the script. trap SIGNAL rest
+ores the functioning of SIGNAL once more.
+
+Variable names starting with a digit are reserved by the shell
+
+$_ is a special variable set to last arg of last command, so it's name is also r
+eserved
+
+Piping echo output to a read may produce unexpected results. In this scenario, t
+he read acts as if it were running in a subshell
+
+The set command enables options within a script
+
+All caps used for a script constant
+
+Uppercase for an errorcode, and name prefixed with E_
+
+Uppercase for an environmental variable
+
+By convention, a command reads its input from fd 0 (stdin), prints normal output
+ to fd 1 (stdout), and error output to fd 2 (stderr). If one of those three fd's
+ is not open, you may encounter problems
+
+Bash history commands: history, fc
+
 

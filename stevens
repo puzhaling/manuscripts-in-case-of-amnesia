@@ -54,4 +54,8 @@ IPv4 and IPv6 define a minimum reassembly buffer size, the minimum datagram size
 
 TCP must keep a copy of our data until it is acknowledged by the peer
 
+The terms 'little-endian' and 'big-endian' indicate which end of the multibyte v
+alue, the little end or the big end, is stored at the starting address of the va
+lue
+
 
