@@ -1,0 +1,35 @@
+A sound, well-established concept (Unix) melded with powerful innovations and a strong penchant for dealing with problems that do not arise in academic teaching systems — this is what makes Linux so fascinating.
+
+Applications, servers, and other programs running under Unix are traditionally refered to as processes
+
+Namespaces allows different processes to have different views of the systems
+
+The maximal size of the address space is not related to how much physical RAM is actually available, and therefore it is known as the virtual address space
+
+The kernel space at the top of the virtual address space is always the same, regardless of the process currently executing
+
+Besides normal processes, there can also be kernel threads running on the system. Kernel threads are also not assiciated with any particular userspace process, so they also have no business dealing with the user portion of the address space
+
+The easiest way of implementing association between pages and pages frames is to use an array containing an entry for each page in virtual address space. But this approach is impractical, because the entire RAM of the system would be needed to hold the page tables. A far less memory-intensive model that fulfills the same purpose can be used: multilevel paging
+
+The architecture-independent part of the kernel always assumes a four-level page table. The architecture-dependent code of the kernel for two- and three-level CPUs must therefore emulate the missing levels by dummy page tables
+
+Mapping is the method by which data from an arbitrary source are transferred into the virtual address space of a process
+
+The kernel can allocate only whole page frames
+
+The concept of page fault is used to make operation of swapping transparrent to applications
+
+Page reclaim is used to synchronize modified mappings with underlying block devices -- for this reason, it is sometimes referred to simply as writing back data
+
+The role of device drivers is to communicate with I/O devices attached to the system
+
+To support work with network connections via the file interface (in the view of application), Linux uses sockets from the BSD world
+
+Sysfs is a virtual filesystem that allows for exporting various properties of the system into userspace
+
+Reference counting is used to detect from how many places in the kernel an object is used
+
+The byte order indicates how multibyte data types are stored
+
+
