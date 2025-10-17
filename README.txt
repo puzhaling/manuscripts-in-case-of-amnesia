@@ -1,4 +1,5 @@
-My reading notes, which I periodically update. This repository currently has my reading notes for the following books:
+My reading notes, which I update periodically. This repository currently has my reading notes for the following books:
+
 absg:                       Advanced Bash-Scripting Guide by Mendel Cooper;
 gdb-info:                   Some notes not from the concrete books but from the different resources in the Internet;
 kernel-by-love:             Linux Kernel Development by Robert Love
